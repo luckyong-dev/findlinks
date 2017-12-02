@@ -35,7 +35,7 @@ func main() {
 func FindLinks(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	url := r.FormValue("url")
 
-	fmt.Printf("Page = %s \n", url)
+	fmt.Fprintf(w, "Page = %q\n", url)
 
 	if len(url) == 0 {
 		return
@@ -49,7 +49,7 @@ func FindLinks(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 
 	links := pageLinks(nil, page)
 	for _, link := range links {
-		fmt.Printf("Link = %s\n", link)
+		fmt.Fprintf(w, "Link = %q\n", link)
 	}
 
 	return
